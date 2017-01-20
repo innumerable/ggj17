@@ -23,20 +23,22 @@ public static class ConnectionInterceptorModelCandidateSineLineGeneratorFactoryB
 public struct Equation
 {
     public float A;
+    public float Ax;
     public float B;
+    public float Bx;
     public float C;
-    public float D;
 
-    public Equation(float _A, float _B, float _C, float _D)
+    public Equation(float _A, float _Ax, float _B, float _Bx, float _C)
     {
         this.A = _A;
+        this.Ax = _Ax;
         this.B = _B;
+        this.Bx = _Bx;
         this.C = _C;
-        this.D = _D;
     }
 
     public float GetValue(float x)
     {
-        return A * Mathf.Sin(B*x + C) + D;
+        return (A + (Ax * x)) * Mathf.Sin((B + (Bx * x)) * x + C);
     }
 }
