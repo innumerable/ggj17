@@ -1,9 +1,26 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 [RequireComponent(typeof(EdgeCollider2D), typeof(LineRenderer))]
 public class Ground : MonoBehaviour
 {
     private float end;
+
+    private LineRenderer line;
+    private EdgeCollider2D edgeCollider;
+
+    public Vector2[] Points
+    {
+        get
+        {
+            return edgeCollider.points;
+        }
+        set
+        {
+            edgeCollider.points = value;
+            line.SetPositions(value.Select(p => (Vector3)p).ToArray());
+        }
+    }
 
     public void Initialise(float start, float width, int iterations)
     {
@@ -13,24 +30,27 @@ public class Ground : MonoBehaviour
 
     void CreateMesh(float start, float width, int iterations)
     {
-        LineRenderer line = GetComponent<LineRenderer>();
-        line.numPositions = iterations + 1;
+        LineRenderer newLine = GetComponent<LineRenderer>();
+        newLine.numPositions = iterations + 1;
 
-        EdgeCollider2D edgeCollider = GetComponent<EdgeCollider2D>();
+        EdgeCollider2D newEdgeCollider = GetComponent<EdgeCollider2D>();
         Vector2[] colliderPoints = new Vector2[iterations + 1];
         
         float gap = width / iterations;
         
         colliderPoints[0] = new Vector3(start, ConnectionInterceptorModelCandidateSineLineGeneratorFactoryBean.GetHeight(start));
-        line.SetPosition(0, colliderPoints[0]);
+        newLine.SetPosition(0, colliderPoints[0]);
 
         for (int i = 0; i < iterations; i++)
         {
             float x = start + gap * (i + 1);
             colliderPoints[i + 1] = new Vector3(x, ConnectionInterceptorModelCandidateSineLineGeneratorFactoryBean.GetHeight(x));
-            line.SetPosition(i + 1, colliderPoints[i + 1]);
+            newLine.SetPosition(i + 1, colliderPoints[i + 1]);
         }
-        edgeCollider.points = colliderPoints;
+        newEdgeCollider.points = colliderPoints;
+
+        line = newLine;
+        edgeCollider = newEdgeCollider;
     }
 
     void Update()
