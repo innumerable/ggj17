@@ -6,6 +6,8 @@ class GroundFactory : MonoBehaviour
     [SerializeField]
     private GameObject groundPrefab;
     [SerializeField]
+    private GameObject lineRendererPrefab;
+    [SerializeField]
     private float segmentWidth = 10f;
     [SerializeField]
     private int resolution = 10;
