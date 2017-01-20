@@ -1,0 +1,61 @@
+# =============== #
+# Unity generated #
+# =============== #
+Temp/
+Obj/
+UnityGenerated/
+Library/
+Builds/
+Assets/AssetStoreTools*
+ 
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+*.svd
+*.userprefs
+*.csproj
+*.pidb
+*.suo
+*.sln
+*.user
+*.unityproj
+*.booproj
+ 
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+%HOMEDRIVE%%HOMEPATH%/
+ 
+#=========INSTRUCTIONS FOR CREATING A UNITY PROJECT=========#
+# 1.Create a git repo on-line (eg. http://github.com)
+#
+# 2.Save your Unity project on your local filesystem
+#
+# 3.Enable External option in Unity ? Preferences ? Packages ? Repository
+# (only if Unity ver < 4.5)
+#
+# 4.Switch to Visible Meta Files in Edit ? Project Settings ? Editor ? Version Control Mode
+#
+# 5.Switch to Force Text in Edit ? Project Settings ? Editor ? Asset Serialization Mode
+#
+# 6.Save scene and project from File menu.
+#
+# 7.Quit Unity and then delete the Library and Temp directory in the project directory.
+#
+# 8.Delete everything but the Assets and ProjectSettings directory.
+#
+# 9.Make your first commit.
+#
+# 10.Open your Unity project while holding down the Option or the left Alt key
+# This will force unity to recreate the library directory
+#
+# 11. Add this gitignore file to your project and commit
