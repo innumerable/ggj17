@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+public static class PlayerInput
 {
-    public bool IsPressed
+    public static bool IsPressed
     {
         get
         {
