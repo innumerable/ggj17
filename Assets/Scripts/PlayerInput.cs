@@ -6,8 +6,7 @@ public static class PlayerInput
     {
         get
         {
-            // If the button is pressed.
-            return Input.GetAxis("Input") >= 0.5f;
+            return Input.anyKey;
         }
     }
 }
