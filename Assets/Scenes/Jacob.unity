@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1956142526}
   offset: {x: 0.25, y: 0.2}
-  velocityMultiplier: 100
+  smoothTime: 0.01
 --- !u!212 &464952086
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -560,7 +560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1956142526}
   offset: {x: 9, y: 3}
-  velocityMultiplier: 20
+  smoothTime: 0.1
 --- !u!4 &1254936856
 Transform:
   m_ObjectHideFlags: 0
@@ -819,7 +819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc82b652254a47c4393cdfe66516f4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thresholdVelocity: 5
+  thresholdVelocity: 20
 --- !u!1 &1986213326
 GameObject:
   m_ObjectHideFlags: 0

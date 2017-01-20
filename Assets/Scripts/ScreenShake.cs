@@ -32,7 +32,5 @@ public class ScreenShake : MonoBehaviour
 
             yield return null;
         }
-
-
     }
 }
