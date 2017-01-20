@@ -164,7 +164,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 464952084}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.56, y: 5.96, z: 0}
+  m_LocalPosition: {x: 5.8, y: 5.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -232,7 +232,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -272,14 +272,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundPrefab: {fileID: 1018958253713174, guid: e2baa1b08a48558409bd430e3683369c,
     type: 2}
+  lineRendererPrefab: {fileID: 1043645183064818, guid: 3130166e04b4e6e48bcb688bb288266c,
+    type: 2}
   segmentWidth: 60
   resolution: 50
-  playerObjectGroup:
-  - {fileID: 1956142526}
-  - {fileID: 464952084}
-  - {fileID: 727900963}
-  angleOfSlopeToPlacePlayerAbove: -10
-  distanceAboveGround: 5
 --- !u!114 &727900970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,7 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1956142526}
-  offset: {x: 3, y: 0.5}
+  offset: {x: 9, y: 3}
   smoothTime: 0.05
 --- !u!1 &1234315438
 GameObject:
@@ -319,7 +315,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1234315438}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: -80.9, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -337,8 +333,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1956142526}
-  minDistance: 10
-  speed: 5
+  minDistance: 30
+  speed: 9
 --- !u!120 &1234315441
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -371,11 +367,11 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: -1, y: 0, z: 0}
-  - {x: 1, y: 0, z: 0}
+  - {x: 0.4, y: 0, z: 0}
+  - {x: -0.4, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 300
+    widthMultiplier: 200
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -450,8 +446,8 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
-  - {x: 0, y: 10}
-  - {x: 0, y: -10}
+  - {x: 0, y: 15}
+  - {x: 0, y: -15}
 --- !u!1 &1348019530
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,7 +615,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1956142526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.36, y: 5.86, z: 0}
+  m_LocalPosition: {x: 5.6, y: 5.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
