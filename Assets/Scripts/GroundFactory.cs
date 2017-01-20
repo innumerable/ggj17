@@ -35,7 +35,10 @@ class GroundFactory : MonoBehaviour
         };
         ConnectionInterceptorModelCandidateSineLineGeneratorFactoryBean.Initialise(equations);
         end = segmentWidth;
+
+        MakeAMeshBoii(-segmentWidth);
         GameObject groundHolder = MakeAMeshBoii(0f);
+
         MovePlayerAboveGround(groundHolder);
     }
 
