@@ -7,6 +7,8 @@ class GroundFactory : MonoBehaviour
     private GameObject groundPrefab;
     [SerializeField]
     private float segmentWidth = 10f;
+    [SerializeField]
+    private int resolution = 10;
 
     private float end = 0f;
 
@@ -14,7 +16,7 @@ class GroundFactory : MonoBehaviour
     {
         Equation[] equations = new[]
         {
-            new Equation(1f, 1f, 0f, 0f)
+            new Equation(1f, .5f, 0f, 0f)
         };
         ConnectionInterceptorModelCandidateSineLineGeneratorFactoryBean.Initialise(equations);
         end = segmentWidth;
@@ -25,7 +27,7 @@ class GroundFactory : MonoBehaviour
     {
         GameObject ground = Instantiate(groundPrefab);
         ground.transform.position = Vector3.zero;
-        ground.GetComponent<Ground>().Initialise(start, segmentWidth, (int)segmentWidth*10);
+        ground.GetComponent<Ground>().Initialise(start, segmentWidth, (int)segmentWidth * resolution);
     }
 
     void Update()

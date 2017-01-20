@@ -7,21 +7,34 @@ public class FollowPlayer : MonoBehaviour
     [SerializeField]
     GameObject player;
 
-	// Use this for initialization
-	void Start()
+    [SerializeField]
+    Vector2 offset;
+
+    [SerializeField]
+    float smoothTime;
+
+    // We have no rigidbody, so calculate velocity manually.
+    Vector3 previousPosition;
+    Vector3 velocity;
+
+    void Start()
     {
-		
-	}
+        previousPosition = transform.position;
+    }
 	
-	// Update is called once per frame
-	void Update()
+	void FixedUpdate()
     {
+        velocity = (transform.position - previousPosition) / Time.deltaTime;
+
         // We want to retain the Z position of the camera.
-        Vector3 newPos = new Vector3(
+        Vector3 destination = new Vector3(
                                     player.transform.position.x,
                                     player.transform.position.y,
-                                    this.transform.position.z);
+                                    this.transform.position.z) 
+                                    + (Vector3)offset;
 
-        this.transform.position = newPos;
+        transform.position = Vector3.SmoothDamp(transform.position, destination, ref velocity, smoothTime);
+
+        previousPosition = transform.position;
 	}
 }

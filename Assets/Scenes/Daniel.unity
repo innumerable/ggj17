@@ -194,6 +194,7 @@ MonoBehaviour:
   groundPrefab: {fileID: 1018958253713174, guid: e2baa1b08a48558409bd430e3683369c,
     type: 2}
   segmentWidth: 10
+  resolution: 50
 --- !u!114 &727900970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +207,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1956142526}
+  moveSpeed: 3
+  offset: {x: 3, y: 0.5}
+  smoothTime: 0.5
 --- !u!1 &1956142526
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,10 +306,10 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5b5405fe8f0a57e4b817727d9394bf4e, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &1956142531
 MonoBehaviour:
