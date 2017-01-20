@@ -30,7 +30,11 @@ class GroundFactory : MonoBehaviour
 
     void Update()
     {
-        if (Camera.main.transform.position.x >= end - segmentWidth / 2f)
+        Camera cam = Camera.main;
+        float camHeight = cam.orthographicSize*2f;
+        float camWidth = camHeight*cam.aspect;
+
+        if (Camera.main.transform.position.x >= end - camWidth)
         {
             MakeAMeshBoii(end);
             end += segmentWidth;
