@@ -41,4 +41,12 @@ public class Ground : MonoBehaviour
         mesh.triangles = triangles;
         return mesh;
     }
+
+    void Update()
+    {
+        if (Camera.main.transform.position.x > end + 10f)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
