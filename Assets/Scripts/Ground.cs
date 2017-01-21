@@ -59,7 +59,7 @@ public class Ground : MonoBehaviour
         float camHeight = cam.orthographicSize * 2f;
         float camWidth = camHeight * cam.aspect;
 
-        if (Camera.main.transform.position.x > end + camWidth)
+        if (Camera.main.transform.position.x > end + camWidth * 2)
         {
             Destroy(gameObject);
         }
