@@ -29,7 +29,6 @@ public class ScoreHandler : MonoBehaviour
     void Start()
     {
         originalPositionX = transform.position.x;
-        Debug.Log("Score file location: " + Application.persistentDataPath + saveFileSuffix);
         ReadHiscores();
     }
     
