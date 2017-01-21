@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Text: '
 
 
-    Press ANY KEY to play again.'
+    Press ANYTHING to play again'
 --- !u!222 &574008432
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3894,7 +3894,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Press ANY KEY to Begin
+  m_Text: 'Press ANYTHING to begin
+
+    Hold down: Dive
+
+    Double press: Jump'
 --- !u!222 &1772269280
 CanvasRenderer:
   m_ObjectHideFlags: 0
