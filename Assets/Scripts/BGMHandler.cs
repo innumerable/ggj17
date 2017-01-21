@@ -18,14 +18,6 @@ public class BGMHandler : MonoBehaviour
     float fadeTime = 1f;
 
     [SerializeField]
-    [Range(0.5f, 1.5f)]
-    float minPitch = 0.75f;
-
-    [SerializeField]
-    [Range(0.5f, 1.5f)]
-    float maxPitch = 1.25f;
-
-    [SerializeField]
     float layer2VelocityLowerThreshold = 30;
 
     [SerializeField]
