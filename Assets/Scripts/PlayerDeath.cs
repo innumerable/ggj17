@@ -10,6 +10,8 @@ class PlayerDeath : MonoBehaviour
     [SerializeField]
     ParticleSystem deathParticlesPrefab;
     ParticleSystem deathParticles;
+    [SerializeField]
+    private GameObject[] otherThingsToDestroy;
 
     Rigidbody2D rb2d;
 
@@ -37,6 +39,10 @@ class PlayerDeath : MonoBehaviour
             deathParticles.transform.position = transform.position;
             deathParticles.Play();
             UIController.EndGame();
+            foreach (GameObject o in otherThingsToDestroy)
+            {
+                Destroy(o);
+            }
         }
     }
 }
