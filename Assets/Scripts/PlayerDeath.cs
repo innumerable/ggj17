@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 class PlayerDeath : MonoBehaviour
 {
@@ -7,6 +8,7 @@ class PlayerDeath : MonoBehaviour
         if (other.gameObject.tag == "Laser")
         {
             Debug.Log("Zap"); // Do restart logic here
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
