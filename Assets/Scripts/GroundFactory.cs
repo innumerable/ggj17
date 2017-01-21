@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading;
+﻿using System.Linq;
 using UnityEngine;
 
 class GroundFactory : MonoBehaviour
@@ -22,34 +21,28 @@ class GroundFactory : MonoBehaviour
     [SerializeField]
     private float distanceAboveGround = 5f;
 
-    /// <summary>
-    /// How many Ground objects are cached.
-    /// </summary>
-    [SerializeField]
-    private int cacheCount;
-
-    Thread workerThread;
-    
-    private Queue<Vector2[]> cache = new Queue<Vector2[]>();
-
     private float end = 0f;
-    private float endAsync = 0f;
 
     void Start()
     {
+        // TODO randomise this shit
+        //Equation[] equations = new[]
+        //{
+        //    new Equation(1f, .5f, 0f, 0f),
+        //    new Equation(0.1f, .05f, 3f, 0f),
+        //    new Equation(0.05f, 1f, 0f, 0f),
+        //    new Equation(4f, .01f, 0f, 0f),
+        //};
+
         Equation[] equations = CreateRandomEquations(20, 0f);
 
         ConnectionInterceptorModelCandidateSineLineGeneratorFactoryBean.Initialise(equations);
         end = segmentWidth;
-        endAsync = segmentWidth;
 
         MakeAMeshBoii(-segmentWidth);
         GameObject groundHolder = MakeAMeshBoii(0f);
 
         MovePlayerAboveGround(groundHolder);
-
-        workerThread = new Thread(CreateGroundPointsIntoCache);
-        workerThread.Start();
     }
 
     Equation[] CreateRandomEquations(int waveCountPerType, float verticalOffset)
@@ -59,6 +52,7 @@ class GroundFactory : MonoBehaviour
         int i = 1;
 
         waves[0] = new Equation(2, 0.00001f, .05f, -.0005f, Mathf.PI, -0.25f);
+//        waves[0] = new Equation(1, 0, 1, 0, Mathf.PI, 0);
 
         // Wide, middling amplitude
         for (; i < 1 + waveCountPerType; i++)
@@ -142,54 +136,11 @@ class GroundFactory : MonoBehaviour
         Camera cam = Camera.main;
         float camHeight = cam.orthographicSize*2f;
         float camWidth = camHeight*cam.aspect;
-        
+
         if (Camera.main.transform.position.x >= end - camWidth * 2)
         {
-            //MakeAMeshBoii(end);
-            CreateGroundPointsIntoCache();
-            InstantiateFromCache();
+            MakeAMeshBoii(end);
             end += segmentWidth;
         }
-
-        if (cache.Count < cacheCount &&
-            workerThread.ThreadState == ThreadState.Stopped)
-        {
-            workerThread = new Thread(CreateGroundPointsIntoCache);
-            workerThread.Priority = System.Threading.ThreadPriority.BelowNormal;
-            workerThread.Start();
-        }
-    }
-
-    GameObject InstantiateFromCache()
-    {
-        GameObject newGround = Instantiate(groundPrefab);
-        Vector2[] points = cache.Dequeue();
-        newGround.GetComponent<Ground>().Initialise(points, points[0].x, segmentWidth);
-
-        return newGround;
-    }
-    
-    void CreateGroundPointsIntoCache()
-    {
-        //endAsync, segmentWidth, iterations
-        int iterations = (int)segmentWidth * resolution;
-
-        Vector2[] points = new Vector2[iterations + 1];
-
-        float gap = segmentWidth / iterations;
-
-        points[0] = new Vector3(endAsync, ConnectionInterceptorModelCandidateSineLineGeneratorFactoryBean.GetHeight(endAsync));
-
-        for (int i = 0; i < iterations; i++)
-        {
-            float x = endAsync + gap * (i + 1);
-            points[i + 1] = new Vector3(x, ConnectionInterceptorModelCandidateSineLineGeneratorFactoryBean.GetHeight(x));
-        }
-
-        endAsync += segmentWidth;
-
-        cache.Enqueue(points);
-
-        Debug.Log(string.Format("I made a ground! There's {0} now.", cache.Count));
     }
 }

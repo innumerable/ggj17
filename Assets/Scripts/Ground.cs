@@ -28,12 +28,6 @@ public class Ground : MonoBehaviour
         this.end = start + width;
     }
 
-    public void Initialise(Vector2[] points, float start, float width)
-    {
-        CreateGroundFromPoints(points);
-        this.end = start + width;
-    }
-
     void CreateMesh(float start, float width, int iterations)
     {
         LineRenderer newLine = GetComponent<LineRenderer>();
@@ -57,26 +51,6 @@ public class Ground : MonoBehaviour
 
         line = newLine;
         edgeCollider = newEdgeCollider;
-    }
-
-    void CreateGroundFromPoints(Vector2[] points)
-    {
-        EdgeCollider2D newEdgeCollider = GetComponent<EdgeCollider2D>();
-        newEdgeCollider.points = points;
-        edgeCollider = newEdgeCollider;
-
-        LineRenderer newLine = GetComponent<LineRenderer>();
-        Vector3[] points2Episode2 = new Vector3[points.Length];
-
-        for (int i = 0; i < points2Episode2.Length; i++)
-        {
-            points2Episode2[i] = points[i];
-        }
-
-        newLine.numPositions = points.Length;
-
-        newLine.SetPositions(points2Episode2);
-        line = newLine;
     }
 
     void Update()
