@@ -53,13 +53,13 @@ class GroundFactory : MonoBehaviour
 
         float B = Random.Range(0.001f, 0.01f);
         //waves[0] = new Equation(1, Random.Range(20f, 50f), B, Mathf.PI, 0);
-        waves[0] = new Equation(2, 0.0001f, .05f, .0005f, Mathf.PI, -0.25f);
+        waves[0] = new Equation(2, 0.00001f, .05f, -.0005f, Mathf.PI, -0.25f);
 
         // Wide, middling amplitude
         for (; i < 1 + waveCountPerType; i++)
         {
             waves[i] = new Equation(Random.Range(0.05f, 0.25f),
-                                    Random.Range(0.0001f, 0.0005f),
+                                    Random.Range(0.00001f, 0.00005f),
                                     Random.Range(0.0001f, 0.0002f),
                                     -Random.Range(0f, 0.001f),
                                     0,
@@ -81,7 +81,7 @@ class GroundFactory : MonoBehaviour
         for (; i < 1 + 3 * waveCountPerType; i++)
         {
             waves[i] = new Equation(Random.Range(0.003f, 0.015f),
-                                    Random.Range(0.0001f, 0.0005f),
+                                    Random.Range(0.00001f, 0.00005f),
                                     Random.Range(0.002f, 0.004f),
                                     -Random.Range(0f, 0.001f),
                                     0,

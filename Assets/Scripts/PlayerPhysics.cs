@@ -44,7 +44,7 @@ public class PlayerPhysics : MonoBehaviour
         // Apply actions
         if (doubleTap && canJump)
 		{
-		    rb2d.velocity = new Vector2(rb2d.velocity.x, Mathf.Max(jumpVelocity, jumpVelocity + rb2d.velocity.y));
+		    rb2d.velocity = new Vector2(rb2d.velocity.x + jumpVelocity/10f, Mathf.Max(jumpVelocity, jumpVelocity + rb2d.velocity.y));
 		    canJump = false;
 		}
         else if (PlayerInput.IsPressed)
