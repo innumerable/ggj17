@@ -36,6 +36,6 @@ public class Laser : MonoBehaviour
 
         // Visuals and audio
         Camera.main.backgroundColor = Color.Lerp(new Color(0.5f, 0f, 0f, 1f), Color.black, (player.transform.position.x - transform.position.x) / (thresholdDistance / 3f));
-        audioSource.volume = Mathf.Lerp(1, 0, (player.transform.position.x - transform.position.x) / (thresholdDistance / 1.5f));
+        audioSource.volume = Mathf.Lerp(1, 0, Mathf.Abs(player.transform.position.x - transform.position.x) / (thresholdDistance / 1.5f));
     }
 }
