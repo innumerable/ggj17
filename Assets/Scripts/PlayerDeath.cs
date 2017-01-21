@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Linq;
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
