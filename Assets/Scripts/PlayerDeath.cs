@@ -1,14 +1,16 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿﻿using UnityEngine;
 
 class PlayerDeath : MonoBehaviour
 {
+    [SerializeField]
+    UIController UIController;
+
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Laser")
         {
-            Debug.Log("Zap"); // Do restart logic here
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            // Do trippy shit
+            UIController.EndGame();
         }
     }
 }

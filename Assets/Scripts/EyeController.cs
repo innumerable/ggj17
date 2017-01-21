@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class EyeController : MonoBehaviour {
 
+    [SerializeField]
+    float leftEyeRotationSpeed = 0.1f;
+    [SerializeField]
+    float rightEyeRotationSpeed = 0.12f;
+
     Quaternion myRotation;
     Transform parentTransform;
     public Transform lOuterEyeRotation;
     public Transform rOuterEyeRotation;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         parentTransform = GetComponentInParent<Transform>();
 
 	}
@@ -19,7 +25,7 @@ public class EyeController : MonoBehaviour {
 	void Update () {
         //transform.localPosition = this.myPosition;
         transform.rotation = Quaternion.identity;// = Quaternion.Euler(0,0,-1 * parentTransform.localRotation.eulerAngles.z);
-        lOuterEyeRotation.rotation = Quaternion.Euler(0,0, -parentTransform.localRotation.eulerAngles.z);
-        rOuterEyeRotation.rotation = parentTransform.localRotation;
+        lOuterEyeRotation.rotation = Quaternion.Euler(0, 0, -parentTransform.localRotation.eulerAngles.z * leftEyeRotationSpeed) * lOuterEyeRotation.rotation;
+        rOuterEyeRotation.rotation = Quaternion.Euler(0, 0, parentTransform.localRotation.eulerAngles.z * rightEyeRotationSpeed) * rOuterEyeRotation.rotation;
     }
 }
