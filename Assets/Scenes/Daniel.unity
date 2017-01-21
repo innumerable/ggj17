@@ -272,10 +272,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundPrefab: {fileID: 1018958253713174, guid: e2baa1b08a48558409bd430e3683369c,
     type: 2}
-  lineRendererPrefab: {fileID: 1043645183064818, guid: 3130166e04b4e6e48bcb688bb288266c,
-    type: 2}
   segmentWidth: 60
   resolution: 50
+  playerObjectGroup:
+  - {fileID: 1956142526}
+  - {fileID: 464952084}
+  - {fileID: 727900963}
+  angleOfSlopeToPlacePlayerAbove: -10
+  distanceAboveGround: 5
 --- !u!114 &727900970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,7 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1956142526}
-  offset: {x: 9, y: 3}
+  offset: {x: 9, y: -3}
   smoothTime: 0.05
 --- !u!1 &1234315438
 GameObject:
@@ -307,7 +311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1234315439
 Transform:
   m_ObjectHideFlags: 0
