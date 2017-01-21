@@ -17,6 +17,9 @@ public class ScoreHandler : MonoBehaviour
     [SerializeField]
     string saveFileSuffix = "/scores.bin";
 
+    [SerializeField]
+    int numScoresToShow = 10;
+
     long score;
 
     float originalPositionX;
@@ -37,9 +40,24 @@ public class ScoreHandler : MonoBehaviour
         scoreTextUI.text = string.Format("Score: {0}", score);
 	}
 
+    public void ShowHiscores(Text text)
+    {
+        string str = "";
+        for (int i = 0; i < hiScores.Count && i < numScoresToShow; i++)
+        {
+            str += hiScores[i].First.ToString().PadRight(3, ' ') + hiScores[i].Second.ToString().PadLeft(5, ' ') + Environment.NewLine;
+            Debug.Log(hiScores[i].First.ToString().PadRight(3, ' ').Length + ", " + hiScores[i].Second.ToString().PadLeft(5, ' ').Length);
+        }
+
+
+        text.text = "HISCORES" + Environment.NewLine + Environment.NewLine + str;
+    }
+
     public void AddHiscore()
     {
         hiScores.Add(new Tuple<int, long>(hiScores.Count + 1, score));
+        hiScores.Sort((emp1, emp2) => emp2.Second.CompareTo(emp1.Second));
+        hiScores = hiScores.GetRange(0, Math.Min(numScoresToShow, hiScores.Count));
         WriteHiscores();
     }
 
@@ -53,7 +71,6 @@ public class ScoreHandler : MonoBehaviour
 
                 try
                 {
-                    formatter.Serialize(fs, hiScores);
                     hiScores = formatter.Deserialize(fs) as List<Tuple<int, long>>;
                 }
                 catch (SerializationException e)
@@ -63,9 +80,11 @@ public class ScoreHandler : MonoBehaviour
                 }
             }
         }
-        catch (Exception ioex)
+        catch (Exception ex)
         {
+            Debug.Log("Could not read hiscore file. Creating a new one. Exception: " + ex.ToString());
             FileStream fs = new FileStream(Application.persistentDataPath + saveFileSuffix, FileMode.Create);
+            fs.Close();
             hiScores = new List<Tuple<int, long>>();
         }
     }

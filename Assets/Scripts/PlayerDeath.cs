@@ -46,8 +46,6 @@ class PlayerDeath : MonoBehaviour
             {
                 Destroy(o);
             }
-
-            scoreHandler.AddHiscore();
         }
     }
 }

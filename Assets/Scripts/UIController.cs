@@ -1,7 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
@@ -17,6 +17,12 @@ public class UIController : MonoBehaviour
     [SerializeField]
     private GameObject scoreUI;
 
+    [SerializeField]
+    private GameObject hiScoreUI;
+
+    [SerializeField]
+    private ScoreHandler scoreHandler;
+
     private bool playing = false;
     private bool takesInput = true;
     private bool finished = false;
@@ -27,6 +33,7 @@ public class UIController : MonoBehaviour
         endGameUI.SetActive(false);
         restartPromptUI.SetActive(false);
         scoreUI.SetActive(false);
+        hiScoreUI.SetActive(false);
         Time.timeScale = 0f;
     }
 
@@ -55,8 +62,12 @@ public class UIController : MonoBehaviour
     public void EndGame()
     {
         endGameUI.SetActive(true);
+        hiScoreUI.SetActive(true);
         playing = false;
         finished = true;
+
+        scoreHandler.AddHiscore();
+        scoreHandler.ShowHiscores(hiScoreUI.GetComponentInChildren<Text>());
         StartCoroutine(WaitBeforeInput(1f));
     }
 
