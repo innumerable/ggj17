@@ -48,7 +48,7 @@ public class AdvancedCamera : MonoBehaviour
 	    for (int i = 0; i < 3; i++)
 	    {
 	        float angle = i*15f;
-            RaycastHit2D hit = Physics2D.Raycast(playerTransform.position, Quaternion.AngleAxis(angle, Vector3.forward) * Vector2.down, 100f, layers);
+            RaycastHit2D hit = Physics2D.Raycast(playerTransform.position, Quaternion.AngleAxis(angle, Vector3.forward) * Vector2.down, 1000f, layers);
             Debug.DrawRay(playerTransform.position, Quaternion.AngleAxis(angle, Vector3.forward) * Vector2.down);
 	        if (hit.collider != null)
 	        {
