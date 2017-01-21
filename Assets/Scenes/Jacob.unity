@@ -344,7 +344,7 @@ MonoBehaviour:
   scaleFactor: 0.2
   offsetXPercent: 0.1
   offsetYPercent: 0
-  cameraScaleFactor: 1.3
+  cameraScaleFactor: 1.5
 --- !u!1 &1234315438
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,6 +808,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultGravity: 1
   higherGravity: 6
+  jumpVelocity: 15
 --- !u!114 &1956142532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -830,7 +831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc82b652254a47c4393cdfe66516f4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thresholdVelocity: 20
 --- !u!1 &1986213326
 GameObject:
   m_ObjectHideFlags: 0

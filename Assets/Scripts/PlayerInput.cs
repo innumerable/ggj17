@@ -9,4 +9,12 @@ public static class PlayerInput
             return Input.anyKey;
         }
     }
+
+    public static bool IsDown
+    {
+        get
+        {
+            return Input.anyKeyDown;
+        }
+    }
 }
