@@ -1534,6 +1534,8 @@ MonoBehaviour:
   UIController: {fileID: 1866265587}
   deathParticlesPrefab: {fileID: 198040548533239142, guid: 5d2314b745123904fb4bc169285408cf,
     type: 2}
+  otherThingsToDestroy:
+  - {fileID: 464952084}
 --- !u!114 &1956142533
 MonoBehaviour:
   m_ObjectHideFlags: 0

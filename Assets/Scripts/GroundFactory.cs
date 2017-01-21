@@ -51,41 +51,41 @@ class GroundFactory : MonoBehaviour
 
         int i = 1;
 
-        //waves[0] = new Equation(2, 0.00001f, .05f, -.0005f, Mathf.PI, -0.25f);
-        waves[0] = new Equation(1, 0, 1, 0, Mathf.PI, 0);
+        waves[0] = new Equation(2, 0.00001f, .05f, -.0005f, Mathf.PI, -0.25f);
+//        waves[0] = new Equation(1, 0, 1, 0, Mathf.PI, 0);
 
-        //// Wide, middling amplitude
-        //for (; i < 1 + waveCountPerType; i++)
-        //{
-        //    waves[i] = new Equation(Random.Range(0.05f, 0.25f),
-        //                            Random.Range(0.00001f, 0.00005f),
-        //                            Random.Range(0.0001f, 0.0002f),
-        //                            -Random.Range(0f, 0.001f),
-        //                            0,
-        //                            0f);
-        //}
+        // Wide, middling amplitude
+        for (; i < 1 + waveCountPerType; i++)
+        {
+            waves[i] = new Equation(Random.Range(0.05f, 0.25f),
+                                    Random.Range(0.00001f, 0.00005f),
+                                    Random.Range(0.0001f, 0.0002f),
+                                    -Random.Range(0f, 0.001f),
+                                    0,
+                                    0f);
+        }
 
-        //// Middling width, Middling amplitude
-        //for (; i < 1 + 2 * waveCountPerType; i++)
-        //{
-        //    waves[i] = new Equation(Random.Range(0.05f, 0.2f),
-        //                            Random.Range(0.0001f, 0.0005f),
-        //                            Random.Range(0.0001f, 0.00002f),
-        //                            -Random.Range(0f, 0.001f),
-        //                            0,
-        //                            0);
-        //}
+        // Middling width, Middling amplitude
+        for (; i < 1 + 2 * waveCountPerType; i++)
+        {
+            waves[i] = new Equation(Random.Range(0.05f, 0.2f),
+                                    Random.Range(0.0001f, 0.0005f),
+                                    Random.Range(0.0001f, 0.00002f),
+                                    -Random.Range(0f, 0.001f),
+                                    0,
+                                    0);
+        }
 
-        //// Reasonably thin, low amplitude
-        //for (; i < 1 + 3 * waveCountPerType; i++)
-        //{
-        //    waves[i] = new Equation(Random.Range(0.003f, 0.015f),
-        //                            Random.Range(0.00001f, 0.00005f),
-        //                            Random.Range(0.002f, 0.004f),
-        //                            -Random.Range(0f, 0.001f),
-        //                            0,
-        //                            0);
-        //}
+        // Reasonably thin, low amplitude
+        for (; i < 1 + 3 * waveCountPerType; i++)
+        {
+            waves[i] = new Equation(Random.Range(0.003f, 0.015f),
+                                    Random.Range(0.00001f, 0.00005f),
+                                    Random.Range(0.002f, 0.004f),
+                                    -Random.Range(0f, 0.001f),
+                                    0,
+                                    0);
+        }
 
         return waves;
     }
