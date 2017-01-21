@@ -39,6 +39,11 @@ public class PlayerPhysics : MonoBehaviour
     [SerializeField]
     private float jumpBoostVelocity = 15f;
 
+    //
+    [Header("ShaderReference")]
+    [SerializeField]
+    private TrippyFX impactEffect;
+
     private float coolDown = 0.5f;
     private float coolDownRemaining;
     private int pressCount = 0;
@@ -113,6 +118,17 @@ public class PlayerPhysics : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             CanJump = true;
+            if (collision.relativeVelocity.magnitude > 75f)
+            {
+                impactEffect.StartEffect(
+                    collision.transform.position.x,
+                    collision.transform.position.y,
+                    Mathf.LerpUnclamped(
+                        0.01f,
+                        0.1f,
+                        collision.relativeVelocity.magnitude / 1000f)
+                    );
+            }
         }
 
         if (collision.relativeVelocity.magnitude > bounceVelocityThreshold)
