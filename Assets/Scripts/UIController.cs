@@ -48,14 +48,13 @@ public class UIController : MonoBehaviour
         endGameUI.SetActive(false);
         restartPromptUI.SetActive(false);
         scoreUI.SetActive(true);
-        Time.timeScale = 1f;
         playing = true;
+        Time.timeScale = 1f;
     }
 
     public void EndGame()
     {
         endGameUI.SetActive(true);
-        Time.timeScale = 0f;
         playing = false;
         finished = true;
         StartCoroutine(WaitBeforeInput(1f));

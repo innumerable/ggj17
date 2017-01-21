@@ -31,7 +31,6 @@ public class Laser : MonoBehaviour
 	    float distance = player.transform.position.x - transform.position.x;
 	    float speed = distance < thresholdDistance ? minSpeed : Mathf.LerpUnclamped(minSpeed, minSpeed * 2f, distance - thresholdDistance);
 //	    float speed = minSpeed;
-        print(speed);
 
         transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, player.transform.position.y);
 
