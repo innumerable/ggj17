@@ -1767,7 +1767,7 @@ MonoBehaviour:
   - {fileID: 1056511863}
   - {fileID: 2057435722}
   - {fileID: 1998145321}
-  mixers: []
+  mainMixer: {fileID: 0}
   defaultVolumes:
   - 1
   - 0
@@ -1987,6 +1987,10 @@ MonoBehaviour:
   defaultGravity: 1
   higherGravity: 6
   jumpVelocity: 15
+  jumpParticleSystem: {fileID: 0}
+  canJumpParticleSystem: {fileID: 0}
+  bounceParticleSystem: {fileID: 0}
+  bounceVelocityThreshold: 15
 --- !u!114 &1956142532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1999,8 +2003,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIController: {fileID: 98312496}
+  scoreHandler: {fileID: 84308671}
   deathParticlesPrefab: {fileID: 198040548533239142, guid: 5d2314b745123904fb4bc169285408cf,
     type: 2}
+  otherThingsToDestroy: []
 --- !u!114 &1956142533
 MonoBehaviour:
   m_ObjectHideFlags: 0

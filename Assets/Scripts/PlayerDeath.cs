@@ -7,6 +7,8 @@ class PlayerDeath : MonoBehaviour
 {
     [SerializeField]
     UIController UIController;
+    [SerializeField]
+    ScoreHandler scoreHandler;
 
     [SerializeField]
     ParticleSystem deathParticlesPrefab;
@@ -44,6 +46,8 @@ class PlayerDeath : MonoBehaviour
             {
                 Destroy(o);
             }
+
+            scoreHandler.AddHiscore();
         }
     }
 }
