@@ -13,12 +13,27 @@ public class PlayerPhysics : MonoBehaviour
     private float jumpVelocity = 10f;
     [SerializeField]
     private ParticleSystem jumpParticleSystem;
+    [SerializeField]
+    private ParticleSystem canJumpParticleSystem;
 
     private float coolDown = 0.5f;
     private float coolDownRemaining;
     private int pressCount = 0;
     private bool canJump = true;
-    
+
+    public bool CanJump
+    {
+        get { return canJump; }
+        set
+        {
+            canJump = value;
+            if (value)
+                canJumpParticleSystem.Play();
+            else
+                canJumpParticleSystem.Pause();
+        }
+    }
+
     Rigidbody2D rb2d;
 
     void Start()
@@ -44,14 +59,14 @@ public class PlayerPhysics : MonoBehaviour
         }
 
         // Apply actions
-        if (doubleTap && canJump)
+        if (doubleTap && CanJump)
 		{
 
 		    rb2d.velocity = new Vector2(rb2d.velocity.x + jumpVelocity/10f, Mathf.Max(jumpVelocity, jumpVelocity + rb2d.velocity.y));
 
 		    jumpParticleSystem.transform.rotation = Quaternion.AngleAxis(Mathf.Atan(10f)-Mathf.PI, Vector3.left);
             jumpParticleSystem.Play();
-		    canJump = false;
+		    CanJump = false;
 		}
         else if (PlayerInput.IsPressed)
         {
@@ -73,7 +88,7 @@ public class PlayerPhysics : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
-            canJump = true;
+            CanJump = true;
         }
     }
 }
