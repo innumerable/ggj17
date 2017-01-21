@@ -51,7 +51,7 @@ public class BGMHandler : MonoBehaviour
         }
         else
         {
-            sources[1].volume = Mathf.Lerp(sources[1].volume, 0, Time.deltaTime * fadeTime);
+            sources[1].volume = Mathf.Lerp(sources[1].volume, 0.2f, Time.deltaTime * fadeTime);
         }
 
         if (velocity > layer3VelocityLowerThreshold)
@@ -60,7 +60,7 @@ public class BGMHandler : MonoBehaviour
         }
         else
         {
-            sources[2].volume = Mathf.Lerp(sources[1].volume, 0, Time.deltaTime * fadeTime);
+            sources[2].volume = Mathf.Lerp(sources[1].volume, 0.2f, Time.deltaTime * fadeTime);
         }
 
         mainMixer.SetFloat("MusicPitch", Mathf.Lerp(1f, 1.2f, (velocity - 5f)/100f));

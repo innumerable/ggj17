@@ -15,6 +15,10 @@ public class PlayerPhysics : MonoBehaviour
     private ParticleSystem jumpParticleSystem;
     [SerializeField]
     private ParticleSystem canJumpParticleSystem;
+    [SerializeField]
+    private ParticleSystem bounceParticleSystem;
+    [SerializeField]
+    private float bounceVelocityThreshold = 15f;
 
     private float coolDown = 0.5f;
     private float coolDownRemaining;
@@ -89,6 +93,11 @@ public class PlayerPhysics : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             CanJump = true;
+        }
+
+        if (collision.relativeVelocity.magnitude > bounceVelocityThreshold)
+        {
+            bounceParticleSystem.Play();
         }
     }
 }
