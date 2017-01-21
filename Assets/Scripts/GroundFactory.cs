@@ -61,7 +61,7 @@ class GroundFactory : MonoBehaviour
             waves[i] = new Equation(Random.Range(0.05f, 0.25f),
                                     Random.Range(0.0001f, 0.0005f),
                                     Random.Range(0.0001f, 0.0002f),
-                                    Random.Range(0f, 0.001f),
+                                    -Random.Range(0f, 0.001f),
                                     0,
                                     0f);
         }
@@ -72,7 +72,7 @@ class GroundFactory : MonoBehaviour
             waves[i] = new Equation(Random.Range(0.05f, 0.2f),
                                     Random.Range(0.0001f, 0.0005f),
                                     Random.Range(0.0001f, 0.00002f),
-                                    Random.Range(0f, 0.001f),
+                                    -Random.Range(0f, 0.001f),
                                     0,
                                     0);
         }
@@ -83,7 +83,7 @@ class GroundFactory : MonoBehaviour
             waves[i] = new Equation(Random.Range(0.003f, 0.015f),
                                     Random.Range(0.0001f, 0.0005f),
                                     Random.Range(0.002f, 0.004f),
-                                    Random.Range(0f, 0.001f),
+                                    -Random.Range(0f, 0.001f),
                                     0,
                                     0);
         }
