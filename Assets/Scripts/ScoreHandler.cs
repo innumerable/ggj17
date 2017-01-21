@@ -12,7 +12,7 @@ public class ScoreHandler : MonoBehaviour
     Text scoreTextUI;
 
 	[SerializeField]
-    float scorePerUnitDistance = 1000;
+    float scorePerUnitDistance = 1;
 
     [SerializeField]
     string saveFileSuffix = "/scores.bin";
@@ -46,9 +46,7 @@ public class ScoreHandler : MonoBehaviour
         for (int i = 0; i < hiScores.Count && i < numScoresToShow; i++)
         {
             str += hiScores[i].First.ToString().PadRight(3, ' ') + hiScores[i].Second.ToString().PadLeft(5, ' ') + Environment.NewLine;
-            Debug.Log(hiScores[i].First.ToString().PadRight(3, ' ').Length + ", " + hiScores[i].Second.ToString().PadLeft(5, ' ').Length);
         }
-
 
         text.text = "HISCORES" + Environment.NewLine + Environment.NewLine + str;
     }

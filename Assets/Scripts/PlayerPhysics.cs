@@ -145,7 +145,7 @@ public class PlayerPhysics : MonoBehaviour
 
     void ApplyBoost()
     {
-        canJump = true;
+        CanJump = true;
     }
 
     void BackwardsBoost()
