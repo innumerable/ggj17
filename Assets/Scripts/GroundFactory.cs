@@ -25,15 +25,6 @@ class GroundFactory : MonoBehaviour
 
     void Start()
     {
-        // TODO randomise this shit
-        //Equation[] equations = new[]
-        //{
-        //    new Equation(1f, .5f, 0f, 0f),
-        //    new Equation(0.1f, .05f, 3f, 0f),
-        //    new Equation(0.05f, 1f, 0f, 0f),
-        //    new Equation(4f, .01f, 0f, 0f),
-        //};
-
         Equation[] equations = CreateRandomEquations(20, 0f);
 
         ConnectionInterceptorModelCandidateSineLineGeneratorFactoryBean.Initialise(equations);
@@ -52,7 +43,6 @@ class GroundFactory : MonoBehaviour
         int i = 1;
 
         waves[0] = new Equation(2, 0.00001f, .05f, -.0005f, Mathf.PI, -0.25f);
-//        waves[0] = new Equation(1, 0, 1, 0, Mathf.PI, 0);
 
         // Wide, middling amplitude
         for (; i < 1 + waveCountPerType; i++)
