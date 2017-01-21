@@ -926,7 +926,7 @@ GameObject:
   - component: {fileID: 740662541}
   - component: {fileID: 740662542}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1555,7 +1555,7 @@ TrailRenderer:
       m_NumColorKeys: 6
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 0
+    numCapVertices: 10
     alignment: 0
     textureMode: 0
   m_MinVertexDistance: 0.05
@@ -1999,6 +1999,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIController: {fileID: 98312496}
+  deathParticlesPrefab: {fileID: 198040548533239142, guid: 5d2314b745123904fb4bc169285408cf,
+    type: 2}
 --- !u!114 &1956142533
 MonoBehaviour:
   m_ObjectHideFlags: 0
