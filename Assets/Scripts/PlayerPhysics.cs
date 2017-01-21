@@ -11,6 +11,8 @@ public class PlayerPhysics : MonoBehaviour
     float higherGravity = 6f;
     [SerializeField]
     private float jumpVelocity = 10f;
+    [SerializeField]
+    private ParticleSystem jumpParticleSystem;
 
     private float coolDown = 0.5f;
     private float coolDownRemaining;
@@ -44,7 +46,11 @@ public class PlayerPhysics : MonoBehaviour
         // Apply actions
         if (doubleTap && canJump)
 		{
+
 		    rb2d.velocity = new Vector2(rb2d.velocity.x + jumpVelocity/10f, Mathf.Max(jumpVelocity, jumpVelocity + rb2d.velocity.y));
+
+		    jumpParticleSystem.transform.rotation = Quaternion.AngleAxis(Mathf.Atan(10f)-Mathf.PI, Vector3.left);
+            jumpParticleSystem.Play();
 		    canJump = false;
 		}
         else if (PlayerInput.IsPressed)
