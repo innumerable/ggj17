@@ -19,11 +19,31 @@ public class PlayerPhysics : MonoBehaviour
     private ParticleSystem bounceParticleSystem;
     [SerializeField]
     private float bounceVelocityThreshold = 15f;
+    [Header("Boost Effects")]
+    [SerializeField]
+    private float backwardsVelocity = 15f;
+    [SerializeField]
+    private float bounceVelocity = 15f;
+    [SerializeField]
+    private PhysicsMaterial2D bouncyMaterial;
+    [SerializeField]
+    private PhysicsMaterial2D normalMaterial;
+    [SerializeField]
+    private float bouncyDuration = 5f;
+    [SerializeField]
+    private float glideVelocity = 15f;
+    [SerializeField]
+    private float glideGravityMultiplier = 0.1f;
+    [SerializeField]
+    private float glideDuration = 2f;
+    [SerializeField]
+    private float jumpBoostVelocity = 15f;
 
     private float coolDown = 0.5f;
     private float coolDownRemaining;
     private int pressCount = 0;
     private bool canJump = true;
+    private float currentGravityMultiplier = 1f;
 
     public bool CanJump
     {
@@ -74,11 +94,11 @@ public class PlayerPhysics : MonoBehaviour
 		}
         else if (PlayerInput.IsPressed)
         {
-            rb2d.gravityScale = higherGravity;
+            rb2d.gravityScale = higherGravity * currentGravityMultiplier;
         }
         else
         {
-            rb2d.gravityScale = defaultGravity;
+            rb2d.gravityScale = defaultGravity * currentGravityMultiplier;
         }
 
         // Time tracking
@@ -99,5 +119,76 @@ public class PlayerPhysics : MonoBehaviour
         {
             bounceParticleSystem.Play();
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case "Backwards":
+                BackwardsBoost();
+                break;
+            case "Bounce":
+                BounceBoost();
+                break;
+            case "Glide":
+                GlideBoost();
+                break;
+            case "Jump":
+                JumpBoost();
+                break;
+            default:
+                break;
+        }
+        Destroy(other.gameObject);
+    }
+
+    void ApplyBoost()
+    {
+        canJump = true;
+    }
+
+    void BackwardsBoost()
+    {
+        ApplyBoost();
+        rb2d.velocity = rb2d.velocity + backwardsVelocity * Vector2.left;
+    }
+
+    void BounceBoost()
+    {
+        ApplyBoost();
+        rb2d.velocity = rb2d.velocity + bounceVelocity * Vector2.down;
+        StartCoroutine(BeBouncy());
+    }
+
+    IEnumerator BeBouncy()
+    {
+        rb2d.sharedMaterial = bouncyMaterial;
+        yield return new WaitForSeconds(bouncyDuration);
+        rb2d.sharedMaterial = normalMaterial;
+    }
+
+    void GlideBoost()
+    {
+        ApplyBoost();
+        rb2d.velocity = rb2d.velocity + glideVelocity * Vector2.right;
+        StartCoroutine(GlideGravity());
+    }
+    
+    IEnumerator GlideGravity()
+    {
+        float time = glideDuration;
+        while ((time -= Time.deltaTime) > 0f)
+        {
+            currentGravityMultiplier = Mathf.Lerp(1f, glideGravityMultiplier, time/glideDuration);
+            yield return null;
+        }
+        currentGravityMultiplier = 1f;
+    }
+
+    void JumpBoost()
+    {
+        ApplyBoost();
+        rb2d.velocity = rb2d.velocity + jumpBoostVelocity*Vector2.up;
     }
 }

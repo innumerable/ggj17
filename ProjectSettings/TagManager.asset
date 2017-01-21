@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Laser
   - Ground
+  - Jump
+  - Glide
+  - Bounce
+  - Backwards
   layers:
   - Default
   - TransparentFX

@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Text: '
 
 
-    Press ANY KEY to play again.'
+    Press ANYTHING to play again'
 --- !u!222 &574008432
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3894,7 +3894,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Press ANY KEY to Begin
+  m_Text: 'Press ANYTHING to begin
+
+    Hold down: Dive
+
+    Double press: Jump'
 --- !u!222 &1772269280
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6656,8 +6660,6 @@ MonoBehaviour:
   - 0
   - 0
   fadeTime: 1
-  minPitch: 0
-  maxPitch: 0.5
   layer2VelocityLowerThreshold: 30
   layer3VelocityLowerThreshold: 60
 --- !u!4 &1816809405
@@ -6913,6 +6915,15 @@ MonoBehaviour:
   canJumpParticleSystem: {fileID: 941037936}
   bounceParticleSystem: {fileID: 2028928633}
   bounceVelocityThreshold: 15
+  backwardsVelocity: 15
+  bounceVelocity: 25
+  bouncyMaterial: {fileID: 6200000, guid: e42b091fef2b4b8419313eef8e798135, type: 2}
+  normalMaterial: {fileID: 6200000, guid: 5b5405fe8f0a57e4b817727d9394bf4e, type: 2}
+  bouncyDuration: 5
+  glideVelocity: 25
+  glideGravityMultiplier: 0.05
+  glideDuration: 5
+  jumpBoostVelocity: 25
 --- !u!114 &1956142532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9739,7 +9750,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -811312852
+  randomSeed: -948859198
   InitialModule:
     serializedVersion: 3
     enabled: 1

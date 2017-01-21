@@ -4,6 +4,16 @@ using UnityEngine;
 [RequireComponent(typeof(EdgeCollider2D), typeof(LineRenderer))]
 public class Ground : MonoBehaviour
 {
+    [Header("Boosts")]
+    [SerializeField]
+    private float boostChance = 0.5f;
+    [SerializeField]
+    private float boostHeightMin = 5f;
+    [SerializeField]
+    private float boostHeightMax = 30f;
+    [SerializeField]
+    private GameObject[] boostPrefabs;
+
     private float end;
 
     private LineRenderer line;
@@ -26,6 +36,14 @@ public class Ground : MonoBehaviour
     {
         CreateMesh(start, width, iterations);
         this.end = start + width;
+        if (Random.value < boostChance)
+            PlaceBoost();
+    }
+
+    void PlaceBoost()
+    {
+        Vector2 position = Points[Random.Range(0, Points.Length - 1)] + Vector2.up * Random.Range(boostHeightMin, boostHeightMax);
+        Instantiate(boostPrefabs[Random.Range(0, boostPrefabs.Length - 1)], position, Quaternion.identity);
     }
 
     void CreateMesh(float start, float width, int iterations)
