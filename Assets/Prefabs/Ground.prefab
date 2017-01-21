@@ -68,6 +68,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd12088873b3b714cb5aa1c30dc36247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boostChance: 1
+  boostHeightMin: 4
+  boostHeightMax: 10
+  boostPrefabs:
+  - {fileID: 1388729136346798, guid: 1aa51e5a493fa7346a9457fa589f61bd, type: 2}
+  - {fileID: 1407332594888484, guid: 054ce839b532a81439645200dd4e0735, type: 2}
+  - {fileID: 1956531447820268, guid: 1a0366bb2f442eb4a8ce405070b52829, type: 2}
+  - {fileID: 1086265517458842, guid: 60e872d6e6ca46647bd377727959fb6a, type: 2}
 --- !u!120 &120832954203408472
 LineRenderer:
   m_ObjectHideFlags: 1

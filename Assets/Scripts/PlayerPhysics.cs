@@ -140,6 +140,7 @@ public class PlayerPhysics : MonoBehaviour
             default:
                 break;
         }
+        Destroy(other.gameObject);
     }
 
     void ApplyBoost()
