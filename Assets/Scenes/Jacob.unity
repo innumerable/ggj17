@@ -520,7 +520,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   minSize: 10
-  maxSize: 40
+  maxSize: 400
   snapSpeed: 15
   scaleFactor: 0.2
   offsetXPercent: 0.1
@@ -654,7 +654,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1234315439
 Transform:
   m_ObjectHideFlags: 0
@@ -680,8 +680,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1956142526}
-  minDistance: 30
-  speed: 9
+  thresholdDistance: 48
+  minSpeed: 6
 --- !u!120 &1234315441
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -718,7 +718,7 @@ LineRenderer:
   - {x: -0.4, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 200
+    widthMultiplier: 300
     widthCurve:
       serializedVersion: 2
       m_Curve:
