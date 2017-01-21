@@ -9,7 +9,7 @@ public class BGMHandler : MonoBehaviour
     [SerializeField]
     AudioSource[] sources;
     [SerializeField]
-    AudioMixer[] mixers;
+    AudioMixer mainMixer;
 
     [SerializeField]
     float[] defaultVolumes = { 1, 0, 0 };
@@ -31,13 +31,6 @@ public class BGMHandler : MonoBehaviour
     [SerializeField]
     float layer3VelocityLowerThreshold = 60;
 
-    string[] exposedParameterNames =
-    {
-        "PitchLayer1",
-        "PitchLayer2",
-        "PitchLayer3",
-    };
-
     // Use this for initialization
     void Start ()
     {
@@ -50,20 +43,18 @@ public class BGMHandler : MonoBehaviour
 
     void Update()
     {
-        if (player.velocity.magnitude > layer2VelocityLowerThreshold)
+        float velocity = player.velocity.x;
+
+        if (velocity > layer2VelocityLowerThreshold)
         {
             sources[1].volume = Mathf.Lerp(sources[1].volume, 1, Time.deltaTime * fadeTime);
-
-
         }
         else
         {
             sources[1].volume = Mathf.Lerp(sources[1].volume, 0, Time.deltaTime * fadeTime);
-
-
         }
 
-        if (player.velocity.magnitude > layer3VelocityLowerThreshold)
+        if (velocity > layer3VelocityLowerThreshold)
         {
             sources[2].volume = Mathf.Lerp(sources[1].volume, 1, Time.deltaTime * fadeTime);
         }
@@ -71,5 +62,7 @@ public class BGMHandler : MonoBehaviour
         {
             sources[2].volume = Mathf.Lerp(sources[1].volume, 0, Time.deltaTime * fadeTime);
         }
+
+        mainMixer.SetFloat("MusicPitch", Mathf.Lerp(1f, 1.2f, (velocity - 5f)/100f));
     }
 }

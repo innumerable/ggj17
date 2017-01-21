@@ -1072,10 +1072,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1956142530}
   sources:
-  - {fileID: 1056511863}
   - {fileID: 2057435722}
+  - {fileID: 1056511863}
   - {fileID: 1998145321}
-  mixers: []
+  mainMixer: {fileID: 24100000, guid: 013d91410af29c74f9180ab84d950dd3, type: 2}
   defaultVolumes:
   - 1
   - 0
