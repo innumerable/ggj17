@@ -70,7 +70,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boostChance: 1
   boostHeightMin: 4
-  boostHeightMax: 10
+  boostHeightMax: 40
   boostPrefabs:
   - {fileID: 1388729136346798, guid: 1aa51e5a493fa7346a9457fa589f61bd, type: 2}
   - {fileID: 1407332594888484, guid: 054ce839b532a81439645200dd4e0735, type: 2}

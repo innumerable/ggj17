@@ -25,7 +25,8 @@ class GroundFactory : MonoBehaviour
 
     void Start()
     {
-        Equation[] equations = CreateRandomEquations(20, 0f);
+//        Equation[] equations = CreateRandomEquations(3, 2, 1);
+        Equation[] equations = MakeEquations();
 
         ConnectionInterceptorModelCandidateSineLineGeneratorFactoryBean.Initialise(equations);
         end = segmentWidth;
@@ -36,45 +37,70 @@ class GroundFactory : MonoBehaviour
         MovePlayerAboveGround(groundHolder);
     }
 
-    Equation[] CreateRandomEquations(int waveCountPerType, float verticalOffset)
+    Equation[] MakeEquations()
     {
-        Equation[] waves = new Equation[1 + (3 * waveCountPerType)];
+        Equation[] waves = new Equation[6];
+        // Base oscillations
+        waves[0] = new Equation(3, 0.0001f, .03f, 0, Mathf.PI, -0.1f);
+
+        // Very wide, increasing amplitudes and offsets
+        waves[1] = new Equation(0.4f, 0.007f, 0.21f, 0, Mathf.PI);
+        waves[2] = new Equation(0.3f, 0.006f, 0.13f, 0, Mathf.PI / 2);
+        waves[3] = new Equation(0.2f, 0.005f, 0.05f, 0, Mathf.PI / 3);
+        waves[4] = new Equation(0.2f, 0.004f, 0.09f, 0, Mathf.PI / 4);
+
+        // Frequent but very low ampl
+        waves[5] = new Equation(0f, 0.0005f, 0.6f);
+
+        return waves;
+    }
+
+    Equation[] CreateRandomEquations(int wideWaves, int midWaves, int thinWaves)
+    {
+        Equation[] waves = new Equation[1 + (3 * (wideWaves + midWaves + thinWaves))];
 
         int i = 1;
+    
+        // Base wave
+        waves[0] = new Equation(2, 0.0001f, .05f, -.0005f, Mathf.PI, -0.1f);
 
-        waves[0] = new Equation(2, 0.00001f, .05f, -.0005f, Mathf.PI, -0.25f);
-
-        // Wide, middling amplitude
-        for (; i < 1 + waveCountPerType; i++)
+        // Very wide, mid amplitude
+        for (; i < 1 + wideWaves; i++)
         {
-            waves[i] = new Equation(Random.Range(0.05f, 0.25f),
-                                    Random.Range(0.00001f, 0.00005f),
-                                    Random.Range(0.0001f, 0.0002f),
-                                    -Random.Range(0f, 0.001f),
+            Equation eq = new Equation(Random.Range(0.02f, 0.05f),
+                                    Random.Range(0.0002f, 0.0005f),
+                                    Random.Range(0.0002f, 0.0005f),
+                                    0,
                                     0,
                                     0f);
+            waves[i] = eq;
+            Debug.Log(string.Format("{0}, {1}, {2}, {3}, {4}", eq.A, eq.Ax, eq.B, eq.Bx, eq.C));
         }
 
         // Middling width, Middling amplitude
-        for (; i < 1 + 2 * waveCountPerType; i++)
+        for (; i < 1 + wideWaves + midWaves; i++)
         {
-            waves[i] = new Equation(Random.Range(0.05f, 0.2f),
-                                    Random.Range(0.0001f, 0.0005f),
-                                    Random.Range(0.0001f, 0.00002f),
-                                    -Random.Range(0f, 0.001f),
+            Equation eq = new Equation(Random.Range(0.02f, 0.05f),
+                                    Random.Range(0.0002f, 0.0005f),
+                                    Random.Range(0.02f, 0.05f),
                                     0,
-                                    0);
+                                    0,
+                                    0f);
+            waves[i] = eq;
+            Debug.Log(string.Format("{0}, {1}, {2}, {3}, {4}", eq.A, eq.Ax, eq.B, eq.Bx, eq.C));
         }
 
         // Reasonably thin, low amplitude
-        for (; i < 1 + 3 * waveCountPerType; i++)
+        for (; i < 1 + wideWaves + midWaves + thinWaves; i++)
         {
-            waves[i] = new Equation(Random.Range(0.003f, 0.015f),
-                                    Random.Range(0.00001f, 0.00005f),
-                                    Random.Range(0.002f, 0.004f),
-                                    -Random.Range(0f, 0.001f),
+            Equation eq = new Equation(Random.Range(0.002f, 0.005f),
                                     0,
-                                    0);
+                                    Random.Range(0.1f, 0.3f),
+                                    0,
+                                    0,
+                                    0f);
+            waves[i] = eq;
+            Debug.Log(string.Format("{0}, {1}, {2}, {3}, {4}", eq.A, eq.Ax, eq.B, eq.Bx, eq.C));
         }
 
         return waves;

@@ -43,7 +43,7 @@ public class Ground : MonoBehaviour
     void PlaceBoost()
     {
         Vector2 position = Points[Random.Range(0, Points.Length - 1)] + Vector2.up * Random.Range(boostHeightMin, boostHeightMax);
-        Instantiate(boostPrefabs[Random.Range(0, boostPrefabs.Length - 1)], position, Quaternion.identity);
+        Instantiate(boostPrefabs[Random.Range(0, boostPrefabs.Length)], position, Quaternion.identity);
     }
 
     void CreateMesh(float start, float width, int iterations)
