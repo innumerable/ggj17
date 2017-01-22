@@ -16,6 +16,9 @@ class PlayerDeath : MonoBehaviour
     [SerializeField]
     private GameObject[] otherThingsToDestroy;
 
+    [SerializeField]
+    private AudioSource deathAudio;
+
     Rigidbody2D rb2d;
 
     SpriteRenderer[] sprites;
@@ -46,6 +49,7 @@ class PlayerDeath : MonoBehaviour
             {
                 Destroy(o);
             }
+            deathAudio.Play();
         }
     }
 }
