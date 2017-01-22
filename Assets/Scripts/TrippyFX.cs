@@ -30,15 +30,22 @@ public class TrippyFX : MonoBehaviour {
         xi = x;
         yi = y;
         tscale = ts;
-        StartCoroutine(Impact());
+        StartCoroutine(Impact(ts,ov));
     }
 
-    IEnumerator Impact()
+    IEnumerator Impact(float ts, bool pause)
     {
-        effectTime = 0f;
-        while ((effectTime += Time.deltaTime) < 0.2f)
-            yield return null;
-        effectTime = 0f;
+        if (pause)
+        {
+            while ((effectTime += Time.deltaTime) < 0.5f / ts)
+                yield return null;
+        }
+        else {
+            effectTime = 0f;
+            while ((effectTime += Time.deltaTime) < 1f / ts)
+                yield return null;
+            effectTime = 0f;
+        }
     }
 
 	// Update is called once per frame

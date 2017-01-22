@@ -45,7 +45,7 @@ class PlayerDeath : MonoBehaviour
             {
                 item.enabled = false;
             }
-            impactEffect.StartEffect(0.5f, 0.5f, 1.5f, true, 1f);
+            impactEffect.StartEffect(0.5f, 0.5f, 1.5f, true, 0.1f);
             rb2d.simulated = false;
             deathParticles.transform.position = transform.position;
             deathParticles.Play();
