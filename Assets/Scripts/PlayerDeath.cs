@@ -5,6 +5,9 @@ using System.Linq;
 [RequireComponent(typeof(Rigidbody2D))]
 class PlayerDeath : MonoBehaviour
 {
+
+
+
     [SerializeField]
     UIController UIController;
     [SerializeField]
@@ -20,6 +23,10 @@ class PlayerDeath : MonoBehaviour
     private AudioSource deathAudio;
 
     Rigidbody2D rb2d;
+
+    [Header("ShaderReference")]
+    [SerializeField]
+    private TrippyFX impactEffect;
 
     SpriteRenderer[] sprites;
 
@@ -41,6 +48,7 @@ class PlayerDeath : MonoBehaviour
             {
                 item.enabled = false;
             }
+            impactEffect.StartEffect(0.5f, 0.5f, 1.5f, true, 0.1f);
             rb2d.simulated = false;
             deathParticles.transform.position = transform.position;
             deathParticles.Play();
