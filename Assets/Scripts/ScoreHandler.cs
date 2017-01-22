@@ -44,10 +44,10 @@ public class ScoreHandler : MonoBehaviour
         string str = "";
         for (int i = 0; i < hiScores.Count && i < numScoresToShow; i++)
         {
-            str += hiScores[i].First.ToString() + " : " + hiScores[i].Second.ToString() + Environment.NewLine;
+            str += (i + 1) + " : " + hiScores[i].Second.ToString() + Environment.NewLine;
         }
 
-        text.text = "HISCORES" + Environment.NewLine + "PLAYER NUMBER : SCORE" + Environment.NewLine + Environment.NewLine + str;
+        text.text = "HISCORES" + Environment.NewLine + "RANK : SCORE" + Environment.NewLine + Environment.NewLine + str;
     }
 
     public void AddHiscore()
