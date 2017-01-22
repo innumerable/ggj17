@@ -270,7 +270,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 32, y: -36}
+  m_AnchoredPosition: {x: 32, y: -32}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &434110270
@@ -334,7 +334,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 54
-    m_Alignment: 3
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -550,6 +550,7 @@ GameObject:
   - component: {fileID: 727900965}
   - component: {fileID: 727900964}
   - component: {fileID: 727900970}
+  - component: {fileID: 727900969}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -625,6 +626,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &727900969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 727900963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a2da5f38b8efb54c8aa63391e035a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fxShader: {fileID: 4800000, guid: 0f85fd14d1f28fa4cacacb25870b2af5, type: 3}
+  normal: {fileID: 2800000, guid: 708fff3d86d7c09478ef6978c675ad11, type: 3}
 --- !u!114 &727900970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -782,7 +796,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 513158330
+  randomSeed: -654204928
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3942,7 +3956,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -35, y: -33}
+  m_AnchoredPosition: {x: -32, y: -32}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1772269277
@@ -4158,7 +4172,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1302282318
+  randomSeed: 165142817
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7045,6 +7059,7 @@ MonoBehaviour:
   glideGravityMultiplier: 0.05
   glideDuration: 5
   jumpBoostVelocity: 25
+  impactEffect: {fileID: 727900969}
 --- !u!114 &1956142532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7064,6 +7079,7 @@ MonoBehaviour:
   - {fileID: 464952084}
   - {fileID: 941037933}
   deathAudio: {fileID: 84308672}
+  impactEffect: {fileID: 727900969}
 --- !u!1 &1989249183
 GameObject:
   m_ObjectHideFlags: 0
@@ -7199,7 +7215,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -684646491
+  randomSeed: -1758177526
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -9873,7 +9889,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -948859198
+  randomSeed: 2057428998
   InitialModule:
     serializedVersion: 3
     enabled: 1
