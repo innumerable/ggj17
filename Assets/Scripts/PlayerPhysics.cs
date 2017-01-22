@@ -118,16 +118,20 @@ public class PlayerPhysics : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             CanJump = true;
-            if (collision.relativeVelocity.magnitude > 75f)
+            if (collision.relativeVelocity.magnitude > 25f)
             {
+                //var wtss = Camera.main.WorldToViewportPoint(collision.transform.position);
                 impactEffect.StartEffect(
-                    collision.transform.position.x,
-                    collision.transform.position.y,
+                    .5f,
+                    .5f,
                     Mathf.LerpUnclamped(
                         0.01f,
-                        0.1f,
+                        0.5f,
                         collision.relativeVelocity.magnitude / 1000f)
                     );
+                //Mathf.Pow(collision.relativeVelocity.magnitude / 500f, 2));
+
+
             }
         }
 

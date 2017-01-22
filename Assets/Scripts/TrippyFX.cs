@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class TrippyFX : MonoBehaviour {
 
-    public float intensity;
+    private float intensity;
+    private float xi;
+    private float yi;
+    private float tscale;
 
     [SerializeField]
     private Shader fxShader;
@@ -20,10 +23,13 @@ public class TrippyFX : MonoBehaviour {
         fxMaterial = new Material(fxShader); 
     }
 	
-    public void StartEffect(float x, float y, float inten)
+    public void StartEffect(float x, float y, float inten, bool ov = false, float ts = 5f)
     {
-        if (effectTime > 0f) return;
+        if (effectTime > 0f && !ov) return;
         intensity = inten;
+        xi = x;
+        yi = y;
+        tscale = ts;
         StartCoroutine(Impact());
     }
 
@@ -46,6 +52,9 @@ public class TrippyFX : MonoBehaviour {
         fxMaterial.SetTexture("_vDisp", normal);
         fxMaterial.SetFloat("_inten", intensity);
         fxMaterial.SetFloat("_time", effectTime);
+        fxMaterial.SetFloat("_xImpact", xi);
+        fxMaterial.SetFloat("_timescale", tscale);
+        fxMaterial.SetFloat("_yImpact", yi);
         Graphics.Blit(source, destination, fxMaterial);
     }
 }
